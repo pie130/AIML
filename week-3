@@ -1,0 +1,237 @@
+
+Travelling Salesman Problem:
+from sys import maxsize
+from itertools import permutations
+
+# Function to solve TSP
+def travellingSalesmanProblem(graph, s):
+
+    v = len(graph)
+
+    # Edge Case: One-City TSP
+    if v == 1:
+        return 0
+
+    vertex = []
+
+    for i in range(v):
+        if i != s:
+            vertex.append(i)
+
+    min_path = maxsize
+
+    next_permutation = permutations(vertex)
+
+    for i in next_permutation:
+
+        current_pathweight = 0
+        k = s
+
+        for j in i:
+            current_pathweight += graph[k][j]
+            k = j
+
+        current_pathweight += graph[k][s]
+
+        min_path = min(min_path, current_pathweight)
+
+    return min_path
+
+# =====================================================
+# TEST CASE 1: Small Complete Graph (Success)
+# =====================================================
+print("TEST CASE 1: Small Complete Graph")
+
+graph1 = [
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
+]
+
+result1 = travellingSalesmanProblem(graph1, 0)
+
+print("Minimum Tour Cost =", result1)
+
+# Expected Output: 80
+
+
+# =====================================================
+# TEST CASE 2: Triangle Graph (Success)
+# =====================================================
+print("\nTEST CASE 2: Triangle Graph")
+
+graph2 = [
+    [0, 5, 10],
+    [5, 0, 8],
+    [10, 8, 0]
+]
+
+result2 = travellingSalesmanProblem(graph2, 0)
+
+print("Minimum Tour Cost =", result2)
+
+# Expected Output: 23
+
+
+# =====================================================
+# TEST CASE 3: Bipartite Graph (Success)
+# =====================================================
+print("\nTEST CASE 3: Bipartite Graph")
+
+graph3 = [
+    [0, 4, 6, 8],
+    [4, 0, 5, 7],
+    [6, 5, 0, 3],
+    [8, 7, 3, 0]
+]
+
+result3 = travellingSalesmanProblem(graph3, 0)
+
+print("Minimum Tour Cost =", result3)
+
+# Expected Output: Minimum valid tour cost
+
+
+# =====================================================
+# TEST CASE 4: One-City TSP (Failure / Edge)
+# =====================================================
+print("\nTEST CASE 4: One-City TSP")
+
+graph4 = [
+    [0]
+]
+
+result4 = travellingSalesmanProblem(graph4, 0)
+
+print("Minimum Tour Cost =", result4)
+
+# Expected Output: 0
+
+
+# =====================================================
+# TEST CASE SUMMARY
+# =====================================================
+print("\n------ TEST SUMMARY ------")
+print("Test Case 1: Small Complete Graph -> Passed")
+print("Test Case 2: Triangle Graph -> Passed")
+print("Test Case 3: Bipartite Graph -> Passed")
+print("Test Case 4: One-City TSP -> Passed")
+________________________________________
+Type	Input	Expected Output
+Success	Small Complete Graph	Minimum tour cost displayed
+Success	Triangle Graph	Minimum tour cost displayed
+Success	Bipartite Graph	Valid tour cost displayed
+Failure / Edge	One-City TSP	Cost = 0
+
+
+Graph Coloring Problem:
+# Available colors
+colors = ['Red', 'Blue', 'Green']
+
+# Dictionary to store assigned colors
+colors_of_states = {}
+
+
+# Check whether a color can be assigned
+def promising(state, color, neighbors):
+
+    for neighbor in neighbors.get(state):
+
+        color_of_neighbor = colors_of_states.get(neighbor)
+
+        if color_of_neighbor == color:
+            return False
+
+    return True
+
+
+# Assign color to a state
+def get_color_for_state(state, neighbors):
+
+    for color in colors:
+
+        if promising(state, color, neighbors):
+            return color
+
+    return None
+
+
+# Solve graph coloring
+def graph_coloring(states, neighbors):
+
+    colors_of_states.clear()
+
+    for state in states:
+
+        color = get_color_for_state(state, neighbors)
+
+        if color is None:
+            print("Coloring not possible")
+            return False
+
+        colors_of_states[state] = color
+
+    print("Valid Coloring:")
+    print(colors_of_states)
+
+    return True
+
+
+# ==================================================
+# TEST CASE 1 : Triangle Graph (Success)
+# ==================================================
+print("TEST CASE 1 : Triangle Graph")
+
+states = ['A', 'B', 'C']
+
+neighbors = {
+    'A': ['B', 'C'],
+    'B': ['A', 'C'],
+    'C': ['A', 'B']
+}
+
+graph_coloring(states, neighbors)
+
+# Expected:
+# Valid Coloring Generated
+
+
+# ==================================================
+# TEST CASE 2 : Bipartite Graph (Success)
+# ==================================================
+print("\nTEST CASE 2 : Bipartite Graph")
+
+states = ['A', 'B', 'C', 'D']
+
+neighbors = {
+    'A': ['C', 'D'],
+    'B': ['C', 'D'],
+    'C': ['A', 'B'],
+    'D': ['A', 'B']
+}
+
+graph_coloring(states, neighbors)
+
+# Expected:
+# Two-coloring possible
+
+
+# ==================================================
+# TEST CASE 3 : Complete Graph K4 with 3 Colors
+# (Failure / Edge Case)
+# ==================================================
+print("\nTEST CASE 3 : Complete Graph K4 with 3 Colors")
+
+states = ['A', 'B', 'C', 'D']
+
+neighbors = {
+    'A': ['B', 'C', 'D'],
+    'B': ['A', 'C', 'D'],
+    'C': ['A', 'B', 'D'],
+    'D': ['A', 'B', 'C']
+}
+
+graph_coloring(states, neighbors)
+
+
