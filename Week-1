@@ -1,0 +1,114 @@
+from collections import deque
+# BFS Traversal Function
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+
+    visited.add(start)
+
+    traversal = []
+
+    while queue:
+        node = queue.popleft()
+        traversal.append(node)
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+return traversal
+# DFS Traversal Function
+
+def dfs(graph, start):
+    visited = set()
+    traversal = []
+
+    def dfs_util(node):
+        visited.add(node)
+        traversal.append(node)
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                dfs_util(neighbor)
+
+    dfs_util(start)
+
+return traversal
+TEST CASE 1 : Connected Graph
+# Expected:
+# BFS : A B C D E
+# DFS : A B D C E
+
+graph1 = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+
+
+print("\nTEST CASE 1 : Connected Graph")
+print("BFS :", bfs(graph1, 'A'))
+print("DFS :", dfs(graph1, 'A'))
+TEST CASE 2 : Multiple Branches
+Expected:
+BFS Level-wise
+DFS Depth-wise
+
+graph2 = {
+    'A': ['B', 'C', 'D'],
+    'B': ['A', 'E', 'F'],
+    'C': ['A', 'G'],
+    'D': ['A', 'H'],
+    'E': ['B'],
+    'F': ['B'],
+    'G': ['C'],
+    'H': ['D']
+}
+
+print("\nTEST CASE 2 : Multiple Branches")
+print("BFS :", bfs(graph2, 'A'))
+print("DFS :", dfs(graph2, 'A'))
+TEST CASE 3 : Cyclic Graph
+# Expected:
+# Each node visited once
+
+graph3 = {
+    'A': ['B', 'D'],
+    'B': ['A', 'C', 'D'],
+    'C': ['B', 'D'],
+    'D': ['A', 'B', 'C']
+}
+
+print("\nTEST CASE 3 : Cyclic Graph")
+print("BFS :", bfs(graph3, 'A'))
+print("DFS :", dfs(graph3, 'A'))
+TEST CASE 4 : Single Node Graph
+# Expected:
+# Only start node printed
+
+graph4 = {
+    'A': []
+}
+
+print("\nTEST CASE 4 : Single Node Graph")
+print("BFS :", bfs(graph4, 'A'))
+print("DFS :", dfs(graph4, 'A'))
+TEST CASE 5 : Disconnected Graph
+# Expected:
+# Only reachable nodes printed
+
+graph5 = {
+    'A': ['B'],
+    'B': ['A', 'C'],
+    'C': ['B'],
+    'D': ['E'],
+    'E': ['D']
+}
+
+print("\nTEST CASE 5 : Disconnected Graph")
+print("BFS :", bfs(graph5, 'A'))
+print("DFS :", dfs(graph5, 'A'))
