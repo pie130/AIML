@@ -16,26 +16,14 @@ def show(title, X, y, hidden=3, lr=0.1, epochs=10000):
     return m, p
 
 
+# Test 1: Non-linear XOR
+X1 = np.array([[0,0],[0,1],[1,0],[1,1]])
+y1 = np.array([0,100,100,0])
+
+show("TEST 1: NON-LINEAR DATASET", X1, y1)
+print("Reason: XOR is non-linear and requires a hidden layer.")
 
 
-
-# Test 3: Training error
-m, p = show("TEST 3: REDUCTION IN TRAINING ERROR", X, y)
-loss = m.loss_curve_
-
-print("\nTraining Loss:")
-for e in [1, 10, 50, 100, 500, 1000, 5000, len(loss)]:
-    if e <= len(loss):
-        print(f"Epoch {e}: {loss[e-1]:.6f}")
-
-print("\nFinal Prediction:", np.round(p, 2))
-print("Final MSE:", round(mean_squared_error(y, p), 6))
-
-plt.plot(range(1, len(loss)+1), loss)
-plt.xlabel("Epochs")
-plt.ylabel("Training Loss")
-plt.title("Reduction in Training Error")
-plt.grid()
-plt.show()
-
-print("Reason: More epochs allow more weight updates through backpropagation.")
+# Common dataset for Tests 2-5
+X = np.array([[2,9],[1,5],[3,6]])
+y = np.array([92,86,89])
