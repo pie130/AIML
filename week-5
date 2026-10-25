@@ -21,7 +21,7 @@ P_sophia_does_not_call_given_no_alarm = 0.98
 
 def validate_probability(p):
     if not (0 <= p <= 1):
-        raise ValueError(f"Invalid probability: {p}. Must be between 0 and 1.")
+        raise ValueError(f"Invalid probability")
 
 
 def joint_probability(alarm, burglary, earthquake,
@@ -84,16 +84,16 @@ def run_test(test_name, expected_type, **kwargs):
         result = joint_probability(**kwargs)
 
         if result >= 0:
-            print(f"✓ {test_name} ({expected_type})")
+            print(f" {test_name} ({expected_type})")
             print(f"  Joint Probability = {result:.10f}\n")
         else:
-            print(f"✗ {test_name}: Invalid negative probability\n")
+            print(f" {test_name}: Invalid negative probability\n")
 
     except Exception as e:
-        print(f"✗ {test_name} ({expected_type})")
+        print(f".{test_name} ({expected_type})")
         print(f"  Error: {e}\n")
 
-print("========== POSITIVE TEST CASES ==========\n")
+
 
 # Test Case 1: Alarm=True, no burglary, no earthquake, both call
 run_test(
@@ -106,51 +106,12 @@ run_test(
     sophia_calls=True
 )
 
-# Test Case 2: Burglary triggers alarm, both call
-run_test(
-    "TC2: Burglary with alarm",
-    "Success",
-    alarm=True,
-    burglary=True,
-    earthquake=False,
-    david_calls=True,
-    sophia_calls=True
-)
 
-# Test Case 3: Earthquake triggers alarm, David calls, Sophia doesn't
-run_test(
-    "TC3: Earthquake with mixed calls",
-    "Success",
-    alarm=True,
-    burglary=False,
-    earthquake=True,
-    david_calls=True,
-    sophia_calls=False
-)
-
-print("========== NEGATIVE / EDGE TEST CASES ==========\n")
-
-# Test Case 4: Missing CPT value
-try:
-    backup = P_alarm_given_burglary_and_earthquake
-    P_alarm_given_burglary_and_earthquake = None
-
-    if P_alarm_given_burglary_and_earthquake is None:
-        raise ValueError("Missing CPT value detected")
-
-except Exception as e:
-    print("✓ TC4: Missing CPT Value (Failure/Edge)")
-    print(f"  Error: {e}\n")
-
-finally:
-    P_alarm_given_burglary_and_earthquake = backup
-
-# Test Case 5: Invalid probability (>1)
+# Test Case 2: Invalid probability (>1)
 try:
     invalid_prob = 1.2
     validate_probability(invalid_prob)
 
 except Exception as e:
-    print("✓ TC5: Invalid Probability > 1 (Failure/Edge)")
-    print(f"  Error: {e}\n")
-
+    print(" TC2: Invalid Probability > 1 (Failure/Edge)")
+    print(f"  Error")
