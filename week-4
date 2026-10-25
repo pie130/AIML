@@ -32,23 +32,6 @@ kb1 = (
 )
 run_test("TEST CASE 1", kb1)
 
-# Test Case 2
-kb2 = (
-    Implies(Not(Rain), Harry_Visited_Hagrid) &
-    Xor(Harry_Visited_Hagrid, Harry_Visited_Dumbledore) &
-    Harry_Visited_Hagrid&
-    Not(Rain)
-)
-run_test("TEST CASE 2", kb2)
-
-# Test Case 3
-kb3 = (
-    Implies(Not(Rain), Harry_Visited_Hagrid) &
-    Xor(Harry_Visited_Hagrid, Harry_Visited_Dumbledore) &
-    Harry_Visited_Dumbledore&
-    Rain
-)
-run_test("TEST CASE 3", kb3)
 
 # Test Case 4
 kb4 = (
@@ -59,9 +42,7 @@ kb4 = (
 )
 run_test("TEST CASE 4", kb4)
 
-# Test Case 5
-kb5 = Implies(Not(Rain), Harry_Visited_Hagrid)
-run_test("TEST CASE 5", kb5)
+
 
 
 
