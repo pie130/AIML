@@ -68,7 +68,8 @@ print("Minimum Tour Cost =", result2)
 
 
 
-Graph Coloring Problem:
+
+
 # Available colors
 colors = ['Red', 'Blue', 'Green']
 
@@ -121,9 +122,9 @@ def graph_coloring(states, neighbors):
     return True
 
 
-# ==================================================
-# TEST CASE 1 : Triangle Graph (Success)
-# ==================================================
+
+# TEST CASE 1 : Triangle Graph
+
 print("TEST CASE 1 : Triangle Graph")
 
 states = ['A', 'B', 'C']
@@ -136,35 +137,11 @@ neighbors = {
 
 graph_coloring(states, neighbors)
 
-# Expected:
-# Valid Coloring Generated
 
 
-# ==================================================
-# TEST CASE 2 : Bipartite Graph (Success)
-# ==================================================
-print("\nTEST CASE 2 : Bipartite Graph")
+# TEST CASE 3 : Complete Graph
 
-states = ['A', 'B', 'C', 'D']
-
-neighbors = {
-    'A': ['C', 'D'],
-    'B': ['C', 'D'],
-    'C': ['A', 'B'],
-    'D': ['A', 'B']
-}
-
-graph_coloring(states, neighbors)
-
-# Expected:
-# Two-coloring possible
-
-
-# ==================================================
-# TEST CASE 3 : Complete Graph K4 with 3 Colors
-# (Failure / Edge Case)
-# ==================================================
-print("\nTEST CASE 3 : Complete Graph K4 with 3 Colors")
+print("\nTEST CASE 3 : Complete Graph")
 
 states = ['A', 'B', 'C', 'D']
 
@@ -176,5 +153,4 @@ neighbors = {
 }
 
 graph_coloring(states, neighbors)
-
 
