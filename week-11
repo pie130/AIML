@@ -16,17 +16,7 @@ def show(title, X, y, hidden=3, lr=0.1, epochs=10000):
     return m, p
 
 
-# Test 1: Non-linear XOR
-X1 = np.array([[0,0],[0,1],[1,0],[1,1]])
-y1 = np.array([0,100,100,0])
 
-show("TEST 1: NON-LINEAR DATASET", X1, y1)
-print("Reason: XOR is non-linear and requires a hidden layer.")
-
-
-# Common dataset for Tests 2-5
-X = np.array([[2,9],[1,5],[3,6]])
-y = np.array([92,86,89])
 
 
 # Test 3: Training error
@@ -49,6 +39,13 @@ plt.grid()
 plt.show()
 
 print("Reason: More epochs allow more weight updates through backpropagation.")
+
+# Test 2: Small neural network
+show("TEST 2: SMALL NEURAL NETWORK", X, y, hidden=1)
+print("Reason: One hidden neuron gives limited learning capacity.")
+
+
+
 
 
 
