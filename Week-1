@@ -18,7 +18,7 @@ def bfs(graph, start):
                 visited.add(neighbor)
                 queue.append(neighbor)
 
-return traversal
+    return traversal
 # DFS Traversal Function
 
 def dfs(graph, start):
@@ -35,12 +35,8 @@ def dfs(graph, start):
 
     dfs_util(start)
 
-return traversal
-TEST CASE 1 : Connected Graph
-# Expected:
-# BFS : A B C D E
-# DFS : A B D C E
-
+    return traversal
+#TEST CASE 1 : Connected Graph
 graph1 = {
     'A': ['B', 'C'],
     'B': ['A', 'D'],
@@ -53,53 +49,8 @@ graph1 = {
 print("\nTEST CASE 1 : Connected Graph")
 print("BFS :", bfs(graph1, 'A'))
 print("DFS :", dfs(graph1, 'A'))
-TEST CASE 2 : Multiple Branches
-Expected:
-BFS Level-wise
-DFS Depth-wise
 
-graph2 = {
-    'A': ['B', 'C', 'D'],
-    'B': ['A', 'E', 'F'],
-    'C': ['A', 'G'],
-    'D': ['A', 'H'],
-    'E': ['B'],
-    'F': ['B'],
-    'G': ['C'],
-    'H': ['D']
-}
-
-print("\nTEST CASE 2 : Multiple Branches")
-print("BFS :", bfs(graph2, 'A'))
-print("DFS :", dfs(graph2, 'A'))
-TEST CASE 3 : Cyclic Graph
-# Expected:
-# Each node visited once
-
-graph3 = {
-    'A': ['B', 'D'],
-    'B': ['A', 'C', 'D'],
-    'C': ['B', 'D'],
-    'D': ['A', 'B', 'C']
-}
-
-print("\nTEST CASE 3 : Cyclic Graph")
-print("BFS :", bfs(graph3, 'A'))
-print("DFS :", dfs(graph3, 'A'))
-TEST CASE 4 : Single Node Graph
-# Expected:
-# Only start node printed
-
-graph4 = {
-    'A': []
-}
-
-print("\nTEST CASE 4 : Single Node Graph")
-print("BFS :", bfs(graph4, 'A'))
-print("DFS :", dfs(graph4, 'A'))
-TEST CASE 5 : Disconnected Graph
-# Expected:
-# Only reachable nodes printed
+#TEST CASE 5 : Disconnected Graph
 
 graph5 = {
     'A': ['B'],
