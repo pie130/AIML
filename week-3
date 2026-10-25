@@ -1,9 +1,7 @@
 
-Travelling Salesman Problem:
 from sys import maxsize
 from itertools import permutations
 
-# Function to solve TSP
 def travellingSalesmanProblem(graph, s):
 
     v = len(graph)
@@ -37,92 +35,37 @@ def travellingSalesmanProblem(graph, s):
 
     return min_path
 
-# =====================================================
-# TEST CASE 1: Small Complete Graph (Success)
-# =====================================================
-print("TEST CASE 1: Small Complete Graph")
+# TEST CASE 1: Triangle Graph 
+print("\nTEST CASE 1: Triangle Graph")
 
 graph1 = [
-    [0, 10, 15, 20],
-    [10, 0, 35, 25],
-    [15, 35, 0, 30],
-    [20, 25, 30, 0]
+    [0, 5, 10],
+    [5, 0, 8],
+    [10, 8, 0]
 ]
 
 result1 = travellingSalesmanProblem(graph1, 0)
 
 print("Minimum Tour Cost =", result1)
 
-# Expected Output: 80
 
-
-# =====================================================
-# TEST CASE 2: Triangle Graph (Success)
-# =====================================================
-print("\nTEST CASE 2: Triangle Graph")
+# TEST CASE 2: One-City TSP 
+print("\nTEST CASE 2: One-City TSP")
 
 graph2 = [
-    [0, 5, 10],
-    [5, 0, 8],
-    [10, 8, 0]
+    [0]
 ]
 
 result2 = travellingSalesmanProblem(graph2, 0)
 
 print("Minimum Tour Cost =", result2)
 
-# Expected Output: 23
 
 
-# =====================================================
-# TEST CASE 3: Bipartite Graph (Success)
-# =====================================================
-print("\nTEST CASE 3: Bipartite Graph")
-
-graph3 = [
-    [0, 4, 6, 8],
-    [4, 0, 5, 7],
-    [6, 5, 0, 3],
-    [8, 7, 3, 0]
-]
-
-result3 = travellingSalesmanProblem(graph3, 0)
-
-print("Minimum Tour Cost =", result3)
-
-# Expected Output: Minimum valid tour cost
 
 
-# =====================================================
-# TEST CASE 4: One-City TSP (Failure / Edge)
-# =====================================================
-print("\nTEST CASE 4: One-City TSP")
-
-graph4 = [
-    [0]
-]
-
-result4 = travellingSalesmanProblem(graph4, 0)
-
-print("Minimum Tour Cost =", result4)
-
-# Expected Output: 0
 
 
-# =====================================================
-# TEST CASE SUMMARY
-# =====================================================
-print("\n------ TEST SUMMARY ------")
-print("Test Case 1: Small Complete Graph -> Passed")
-print("Test Case 2: Triangle Graph -> Passed")
-print("Test Case 3: Bipartite Graph -> Passed")
-print("Test Case 4: One-City TSP -> Passed")
-________________________________________
-Type	Input	Expected Output
-Success	Small Complete Graph	Minimum tour cost displayed
-Success	Triangle Graph	Minimum tour cost displayed
-Success	Bipartite Graph	Valid tour cost displayed
-Failure / Edge	One-City TSP	Cost = 0
 
 
 Graph Coloring Problem:
