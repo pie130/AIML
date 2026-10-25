@@ -1,6 +1,4 @@
-
 def aStarAlgo(start_node, stop_node, Graph_nodes, H_dist):
-
     open_set = {start_node}
     closed_set = set()
 
@@ -52,60 +50,7 @@ def aStarAlgo(start_node, stop_node, Graph_nodes, H_dist):
     return None, float('inf')
 
 
-Test Case 1: Success
-Graph with Admissible Heuristic
-Graph_nodes = {
-	'S': [('A', 1), ('G', 10)],
-	'A': [('B', 2), ('C', 1)],
-	'B': [('D', 5)],
-	'C': [('D', 3), ('G', 4)],
-	'D': [('G', 2)]
-}
- 
-H_dist = {
-	'S': 5,
-	'A': 3,
-	'B': 4,
-	'C': 2,
-	'D': 1,
-	'G': 0
-}
- 
-aStarAlgo('S', 'G', Graph_nodes, H_dist)
-Expected Output
-Path found: ['S', 'A', 'C', 'G']
-Total Cost: 6
-Explanation
-Validates standard A* search with an admissible heuristic.
-
-Test Case 2: Success
-Multiple Possible Paths
-Graph_nodes = {
-	'S': [('A', 2), ('B', 4)],
-	'A': [('G', 5)],
-	'B': [('G', 2)],
-	'G': []
-}
- 
-H_dist = {
-	'S': 3,
-	'A': 2,
-	'B': 1,
-	'G': 0
-}
- 
-aStarAlgo('S', 'G', Graph_nodes, H_dist)
-Expected Output
-Path found: ['S', 'B', 'G']
-Total Cost: 6
-Explanation
-Possible paths:
-S → A → G = 7
-S → B → G = 6
-Least-cost path is selected.
-
-Test Case 3: Success
-Direct Start-Goal Connection
+#Test Case 3: Success
 Graph_nodes = {
 	'S': [('G', 3)],
 	'G': []
@@ -117,14 +62,9 @@ H_dist = {
 }
  
 aStarAlgo('S', 'G', Graph_nodes, H_dist)
-Expected Output
-Path found: ['S', 'G']
-Total Cost: 3
-Explanation
-Simple correctness case.
 
-Test Case 4: Failure / Edge
-Goal Not Reachable
+#Test Case 4: Failure / Edge
+
 Graph_nodes = {
 	'S': [('A', 1)],
 	'A': [('B', 2)],
@@ -140,27 +80,6 @@ H_dist = {
 }
  
 aStarAlgo('S', 'G', Graph_nodes, H_dist)
-Expected Output
-Path not found
-Explanation
-No path exists from S to G.
 
-Test Case 5: Failure / Edge
-Misleading Heuristic
-Graph_nodes = {
-	'S': [('A', 1), ('B', 2)],
-	'A': [('G', 10)],
-	'B': [('G', 2)],
-	'G': []
-}
- 
-# Bad heuristic (overestimates B)
-H_dist = {
-	'S': 1,
-	'A': 0,
-	'B': 100,
-	'G': 0
-}
- 
-aStarAlgo('S', 'G', Graph_nodes, H_dist)
+
 
