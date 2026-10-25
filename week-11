@@ -39,13 +39,3 @@ plt.grid()
 plt.show()
 
 print("Reason: More epochs allow more weight updates through backpropagation.")
-
-# Test 2: Small neural network
-show("TEST 2: SMALL NEURAL NETWORK", X, y, hidden=1)
-print("Reason: One hidden neuron gives limited learning capacity.")
-
-
-
-
-
-
