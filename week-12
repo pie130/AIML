@@ -33,3 +33,27 @@ svm.fit(X_train, y_train)
 
 print("Accuracy:", svm.score(X_test, y_test))
 print("Support vectors:\n", svm.support_vectors_)
+
+
+# =========================================================
+# 4. OVERLAPPING CLASSES
+# Versicolor(1) vs Virginica(2)
+# =========================================================
+
+X3 = X[y != 0]
+y3 = y[y != 0]
+
+Xtr, Xte, ytr, yte = train_test_split(
+    X3, y3, test_size=0.2, random_state=42
+)
+
+scaler = StandardScaler()
+Xtr = scaler.fit_transform(Xtr)
+Xte = scaler.transform(Xte)
+
+svm2 = SVC(kernel="linear", C=1)
+svm2.fit(Xtr, ytr)
+
+print("\nOverlapping classes accuracy:",
+      svm2.score(Xte, yte))
+
