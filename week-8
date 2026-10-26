@@ -58,6 +58,24 @@ show_tree(
     model,
     ["Outlook", "Temperature", "Humidity", "Wind"],
 
+    "TEST CASE 1 : Play Tennis Dataset")
+
+clear_data = [
+    ["Red", "Yes"],
+    ["Red", "Yes"],
+    ["Blue", "No"],
+    ["Blue", "No"]
+]
+X, y, encoder = prepare_data(clear_data)
+
+model = DecisionTreeClassifier(criterion="entropy")
+model.fit(X, y)
+
+show_tree(
+    model,
+    ["Color"],
+
+
     "TEST CASE 4 : All Samples Same Class"
 )
 missing_data = [ ["Sunny", "Hot", "Yes"],
