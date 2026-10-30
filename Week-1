@@ -49,17 +49,12 @@ graph1 = {
 print("\nTEST CASE 1 : Connected Graph")
 print("BFS :", bfs(graph1, 'A'))
 print("DFS :", dfs(graph1, 'A'))
+# Only start node printed
 
-#TEST CASE 5 : Disconnected Graph
-
-graph5 = {
-    'A': ['B'],
-    'B': ['A', 'C'],
-    'C': ['B'],
-    'D': ['E'],
-    'E': ['D']
+graph4 = {
+    'A': []
 }
 
-print("\nTEST CASE 5 : Disconnected Graph")
-print("BFS :", bfs(graph5, 'A'))
-print("DFS :", dfs(graph5, 'A'))
+print("\nTEST CASE 4 : Single Node Graph")
+print("BFS :", bfs(graph4, 'A'))
+print("DFS :", dfs(graph4, 'A'))
