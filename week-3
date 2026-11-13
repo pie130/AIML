@@ -60,6 +60,18 @@ result2 = travellingSalesmanProblem(graph2, 0)
 
 print("Minimum Tour Cost =", result2)
 
+tc4
+print("\nTEST CASE 4: One-City TSP")
+
+graph4 = [
+    [0]
+]
+
+result4 = travellingSalesmanProblem(graph4, 0)
+
+print("Minimum Tour Cost =", result4)
+
+
 
 
 
