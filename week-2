@@ -78,6 +78,7 @@ H_dist = {
 	'B': 1,
 	'G': 0
 }
+aStarAlgo('S', 'G', Graph_nodes, H_dist)
 
 Test Case 2: Success
 Multiple Possible Paths
