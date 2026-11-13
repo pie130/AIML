@@ -27,3 +27,9 @@ print("Reason: XOR is non-linear and requires a hidden layer.")
 # Common dataset for Tests 2-5
 X = np.array([[2,9],[1,5],[3,6]])
 y = np.array([92,86,89])
+
+# Test 2: Small neural network
+show("TEST 2: SMALL NEURAL NETWORK", X, y, hidden=1)
+print("Reason: One hidden neuron gives limited learning capacity.")
+
+
