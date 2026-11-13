@@ -43,6 +43,15 @@ kb4 = (
 run_test("TEST CASE 2", kb2)
 
 
+# Test Case 4
+kb4 = (
+    Implies(Not(Rain), Harry_Visited_Hagrid) &
+    Xor(Harry_Visited_Hagrid, Harry_Visited_Dumbledore) &
+    Harry_Visited_Hagrid&
+    Harry_Visited_Dumbledore
+
+
+
 
 
 
