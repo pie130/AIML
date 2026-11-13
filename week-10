@@ -4,6 +4,29 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, classification_report
 
 
+# ==================================================
+# TEST CASE 1: IRIS DATASET - K = 3
+# ==================================================
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+x_train, x_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.1, random_state=42
+)
+
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(x_train, y_train)
+
+iris_pred = model.predict(x_test)
+
+print("\nTEST CASE 1: IRIS DATASET")
+print("Input: Iris dataset, k=3")
+print("Accuracy:", model.score(x_test, y_test))
+print("Status: SUCCESS")
+
+
 
 # ==================================================
 # TEST CASE 2: NUMERIC DATA
