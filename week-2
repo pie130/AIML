@@ -78,6 +78,26 @@ H_dist = {
 	'B': 1,
 	'G': 0
 }
+
+Test Case 2: Success
+Multiple Possible Paths
+Graph_nodes = {
+	'S': [('A', 2), ('B', 4)],
+	'A': [('G', 5)],
+	'B': [('G', 2)],
+	'G': []
+}
+ 
+H_dist = {
+	'S': 3,
+	'A': 2,
+	'B': 1,
+	'G': 0
+}
+ 
+aStarAlgo('S', 'G', Graph_nodes, H_dist)
+Expected Output
+
  
 aStarAlgo('S', 'G', Graph_nodes, H_dist)
 
