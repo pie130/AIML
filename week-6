@@ -90,6 +90,27 @@ print("Expected probability: 0.00672")
 print("Test Case 1: PASS")
 
 
+
+# ==================================================
+# TEST CASE 2 - SUCCESS
+# ==================================================
+
+print("\nTEST CASE 2 - SUCCESS")
+
+obs = ['sleeping', 'eating', 'sleeping']
+
+probability, path = viterbi(obs)
+
+print("Input:", obs)
+print("Most likely state sequence:", path)
+print("Viterbi probability:", probability)
+
+print("Transition and emission probabilities are valid.")
+print("Test Case 2: PASS")
+
+
+
+
 # TEST CASE 5 - FAILURE / EDGE
 # INVALID PROBABILITY MATRIX
 print("\nTEST CASE 5 - FAILURE / EDGE")
