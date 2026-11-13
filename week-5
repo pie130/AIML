@@ -115,3 +115,16 @@ try:
 except Exception as e:
     print(" TC2: Invalid Probability > 1 (Failure/Edge)")
     print(f"  Error")
+
+
+
+
+# Test Case 5: Invalid probability (>1)
+try:
+    invalid_prob = 1.2
+    validate_probability(invalid_prob)
+
+except Exception as e:
+    print("✓ TC5: Invalid Probability > 1 (Failure/Edge)")
+    print(f"  Error: {e}\n")
+
